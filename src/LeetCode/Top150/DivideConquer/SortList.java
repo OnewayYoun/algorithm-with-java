@@ -4,18 +4,13 @@ package LeetCode.Top150.DivideConquer;
 public class SortList {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        ListNode node1 = new ListNode(4);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(1);
-        ListNode node4 = new ListNode(3);
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
+        ListNode node = new ListNode(4);
+        node.add(2);
+        node.add(1);
+        node.add(3);
 
-        ListNode listNode = solution.sortList(node1);
-        System.out.println(listNode);
-
-
+        ListNode listNode = solution.sortList(node);
+        listNode.print();
     }
 }
 
@@ -81,5 +76,22 @@ class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    public void add(int val) {
+        ListNode current = this;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = new ListNode(val);
+    }
+
+    public void print() {
+        ListNode current = this;
+        while (current != null) {
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
     }
 }
